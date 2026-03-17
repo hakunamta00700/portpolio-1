@@ -87,6 +87,7 @@ export default function BookPage({ params }: { params: Promise<{ slug: string }>
     const json = await res.json()
 
     if (res.ok) {
+      sessionStorage.setItem('booking_phone', customerData.phone)
       router.push(`/${slug}/confirm?no=${json.reservationNo}`)
     } else {
       toast.error(json.error ?? '예약에 실패했습니다')
@@ -109,14 +110,17 @@ export default function BookPage({ params }: { params: Promise<{ slug: string }>
       <BusinessHeader business={bizData.business} />
 
       <div className="max-w-xl mx-auto px-4 py-6">
-        <div className="flex items-center gap-2 mb-4">
-          <Link href={`/${slug}`} className="text-gray-400 hover:text-gray-600">
+        {/* Back nav + title */}
+        <div className="flex items-center gap-2 mb-6">
+          <Link href={`/${slug}`} className="text-gray-400 hover:text-gray-600 transition-colors">
             <ChevronLeft className="h-5 w-5" />
           </Link>
-          <h2 className="font-semibold">예약하기</h2>
-          {selectedService && (
-            <span className="text-sm text-blue-600 ml-1">- {selectedService.name}</span>
-          )}
+          <div>
+            <h2 className="font-semibold text-gray-900">예약하기</h2>
+            {selectedService && (
+              <p className="text-xs text-blue-600 mt-0.5">{selectedService.name}</p>
+            )}
+          </div>
         </div>
 
         <StepIndicator currentStep={step} />
@@ -129,8 +133,8 @@ export default function BookPage({ params }: { params: Promise<{ slug: string }>
               maxAdvanceDays={bizData.business.maxAdvanceDays}
             />
             {selectedDate && (
-              <div>
-                <p className="text-sm font-medium text-gray-600 mb-2">
+              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4">
+                <p className="text-sm font-medium text-gray-700 mb-3">
                   {formatDateShort(selectedDate.toISOString().slice(0, 10))} 예약 가능 시간
                 </p>
                 <TimeSlotPicker
@@ -146,7 +150,7 @@ export default function BookPage({ params }: { params: Promise<{ slug: string }>
               disabled={!selectedDate || !selectedTime}
               onClick={() => setStep(2)}
             >
-              다음
+              다음 단계
             </Button>
           </div>
         )}

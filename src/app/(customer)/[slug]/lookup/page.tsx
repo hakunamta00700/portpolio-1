@@ -8,12 +8,11 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { StatusBadge } from '@/components/status-badge'
 import { formatDate, formatTime, formatDuration, formatPrice } from '@/lib/format'
 import { toast } from 'sonner'
 import type { ReservationStatus } from '@/types'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, Search, Calendar, Clock, CreditCard, User } from 'lucide-react'
 
 const lookupSchema = z.object({
   reservationNo: z.string().min(1, '예약번호를 입력해주세요'),
@@ -82,74 +81,116 @@ export default function LookupPage({ params }: { params: Promise<{ slug: string 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-xl mx-auto px-4 py-8">
-        <div className="flex items-center gap-2 mb-6">
-          <Link href={`/${slug}`} className="text-gray-400 hover:text-gray-600">
+      <div className="bg-white shadow-sm">
+        <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-400" />
+        <div className="max-w-xl mx-auto px-4 py-4 flex items-center gap-3">
+          <Link href={`/${slug}`} className="text-gray-400 hover:text-gray-600 transition-colors">
             <ChevronLeft className="h-5 w-5" />
           </Link>
-          <h1 className="text-xl font-bold">예약 조회/취소</h1>
+          <h1 className="text-base font-bold text-gray-900">예약 조회 / 취소</h1>
+        </div>
+      </div>
+
+      <div className="max-w-xl mx-auto px-4 py-6 space-y-4">
+        {/* Lookup form */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+          <div className="px-5 py-4 border-b border-gray-50">
+            <div className="flex items-center gap-2">
+              <Search className="h-4 w-4 text-blue-500" />
+              <h2 className="text-sm font-semibold text-gray-800">예약 조회</h2>
+            </div>
+            <p className="text-xs text-gray-400 mt-0.5">예약번호와 예약 시 입력한 연락처를 입력하세요</p>
+          </div>
+          <form onSubmit={handleSubmit(onLookup)} className="px-5 py-4 space-y-3.5">
+            <div className="space-y-1.5">
+              <Label className="text-xs font-medium text-gray-600">예약번호</Label>
+              <Input
+                placeholder="RSV-20240101-XXXX"
+                className="font-mono"
+                {...register('reservationNo')}
+              />
+              {errors.reservationNo && (
+                <p className="text-xs text-red-500">{errors.reservationNo.message}</p>
+              )}
+            </div>
+            <div className="space-y-1.5">
+              <Label className="text-xs font-medium text-gray-600">예약자 연락처</Label>
+              <Input placeholder="010-0000-0000" {...register('phone')} />
+              {errors.phone && (
+                <p className="text-xs text-red-500">{errors.phone.message}</p>
+              )}
+            </div>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? '조회 중...' : '조회하기'}
+            </Button>
+          </form>
         </div>
 
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="text-base">예약 조회</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit(onLookup)} className="space-y-3">
-              <div className="space-y-1">
-                <Label>예약번호</Label>
-                <Input placeholder="RSV-20240101-XXXX" {...register('reservationNo')} />
-                {errors.reservationNo && <p className="text-sm text-red-500">{errors.reservationNo.message}</p>}
-              </div>
-              <div className="space-y-1">
-                <Label>예약자 연락처</Label>
-                <Input placeholder="010-0000-0000" {...register('phone')} />
-                {errors.phone && <p className="text-sm text-red-500">{errors.phone.message}</p>}
-              </div>
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? '조회 중...' : '조회'}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
+        {/* Result */}
         {result && (
-          <Card>
-            <CardContent className="p-5 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-sm text-blue-700 font-bold">{result.reservation.reservationNo}</span>
-                <StatusBadge status={result.reservation.status as ReservationStatus} />
-              </div>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-500">서비스</span>
-                  <span>{result.service.name}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">일시</span>
-                  <span>{formatDate(result.reservation.date)} {formatTime(result.reservation.startTime)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">소요/금액</span>
-                  <span>{formatDuration(result.service.duration)} / {formatPrice(result.service.price)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-500">예약자</span>
-                  <span>{result.customer.name}</span>
+          <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+            {/* Status header */}
+            <div className="px-5 py-4 border-b border-gray-50 flex items-center justify-between">
+              <span className="font-mono text-sm font-bold text-blue-700">
+                {result.reservation.reservationNo}
+              </span>
+              <StatusBadge status={result.reservation.status as ReservationStatus} />
+            </div>
+
+            {/* Details */}
+            <div className="px-5 py-1 divide-y divide-gray-50">
+              <div className="flex items-center gap-3 py-3">
+                <Calendar className="h-4 w-4 text-gray-400 shrink-0" />
+                <div className="flex flex-1 justify-between gap-2">
+                  <span className="text-sm text-gray-500">일시</span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {formatDate(result.reservation.date)} {formatTime(result.reservation.startTime)}
+                  </span>
                 </div>
               </div>
-              {canCancel && (
+              <div className="flex items-center gap-3 py-3">
+                <Clock className="h-4 w-4 text-gray-400 shrink-0" />
+                <div className="flex flex-1 justify-between gap-2">
+                  <span className="text-sm text-gray-500">서비스</span>
+                  <span className="text-sm font-medium text-gray-900">{result.service.name}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 py-3">
+                <Clock className="h-4 w-4 text-gray-400 shrink-0" />
+                <div className="flex flex-1 justify-between gap-2">
+                  <span className="text-sm text-gray-500">소요시간</span>
+                  <span className="text-sm font-medium text-gray-900">{formatDuration(result.service.duration)}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 py-3">
+                <CreditCard className="h-4 w-4 text-gray-400 shrink-0" />
+                <div className="flex flex-1 justify-between gap-2">
+                  <span className="text-sm text-gray-500">금액</span>
+                  <span className="text-sm font-bold text-blue-600">{formatPrice(result.service.price)}</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 py-3">
+                <User className="h-4 w-4 text-gray-400 shrink-0" />
+                <div className="flex flex-1 justify-between gap-2">
+                  <span className="text-sm text-gray-500">예약자</span>
+                  <span className="text-sm font-medium text-gray-900">{result.customer.name}</span>
+                </div>
+              </div>
+            </div>
+
+            {canCancel && (
+              <div className="px-5 pb-4 pt-2">
                 <Button
                   variant="destructive"
-                  className="w-full mt-2"
+                  className="w-full"
                   onClick={handleCancel}
                   disabled={cancelling}
                 >
-                  {cancelling ? '취소 중...' : '예약 취소'}
+                  {cancelling ? '취소 중...' : '예약 취소하기'}
                 </Button>
-              )}
-            </CardContent>
-          </Card>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>
