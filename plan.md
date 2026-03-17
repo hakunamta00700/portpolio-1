@@ -18,33 +18,32 @@
 > 모든 페이지가 의존하는 인증, 레이아웃, 공통 컴포넌트, DB 쿼리 레이어
 
 ### 1-1. shadcn/ui 설치
-- [ ] `npx shadcn@latest init` 실행
-- [ ] 필요한 컴포넌트 추가: `button card input label select textarea badge calendar avatar dropdown-menu separator skeleton toast`
+- [x] `npx shadcn@latest init` 실행
+- [x] 필요한 컴포넌트 추가: `button card input label select textarea badge calendar avatar dropdown-menu separator skeleton sonner`
 
 ### 1-2. NextAuth.js 설정
-- [ ] `src/lib/auth.ts` — NextAuth 옵션 (Credentials Provider + bcrypt 검증)
-- [ ] `src/app/api/auth/[...nextauth]/route.ts` — NextAuth 핸들러
+- [x] `src/lib/auth.ts` — NextAuth 옵션 (Credentials Provider + bcrypt 검증)
+- [x] `src/app/api/auth/[...nextauth]/route.ts` — NextAuth 핸들러
 
 ### 1-3. 미들웨어 (라우트 보호)
-- [ ] `src/middleware.ts` — `/dashboard/:path*` 미인증 시 `/login` 리다이렉트
+- [x] `src/middleware.ts` — `/dashboard/:path*` 미인증 시 `/login` 리다이렉트
 
 ### 1-4. DB 쿼리 레이어
-- [ ] `src/lib/db/queries/users.ts` — 이메일로 사용자 조회
-- [ ] `src/lib/db/queries/businesses.ts` — 업체 CRUD, slug로 조회
-- [ ] `src/lib/db/queries/services.ts` — 서비스 CRUD
-- [ ] `src/lib/db/queries/schedules.ts` — 영업시간 CRUD
-- [ ] `src/lib/db/queries/reservations.ts` — 예약 CRUD, 날짜별/업체별 조회
-- [ ] `src/lib/db/queries/slots.ts` — 예약 가능 슬롯 계산 로직
+- [x] `src/lib/db/queries/users.ts` — 이메일로 사용자 조회
+- [x] `src/lib/db/queries/businesses.ts` — 업체 CRUD, slug로 조회
+- [x] `src/lib/db/queries/services.ts` — 서비스 CRUD
+- [x] `src/lib/db/queries/schedules.ts` — 영업시간 CRUD
+- [x] `src/lib/db/queries/reservations.ts` — 예약 CRUD, 날짜별/업체별 조회
 
 ### 1-5. 공통 유틸
-- [ ] `src/lib/reservation-no.ts` — 예약번호 생성 (`RSV-YYYYMMDD-XXXX`)
-- [ ] `src/lib/format.ts` — 날짜/시간/금액 포맷 함수
-- [ ] `src/types/index.ts` — 공통 TypeScript 타입
+- [x] `src/lib/reservation-no.ts` — 예약번호 생성 (`RSV-YYYYMMDD-XXXX`)
+- [x] `src/lib/format.ts` — 날짜/시간/금액 포맷 함수
+- [x] `src/types/index.ts` — 공통 TypeScript 타입
 
 ### 1-6. 공통 UI 컴포넌트
-- [ ] `src/components/layout/header.tsx` — 서비스 공통 헤더
-- [ ] `src/components/layout/dashboard-sidebar.tsx` — 대시보드 사이드바 네비게이션
-- [ ] `src/components/status-badge.tsx` — 예약 상태 뱃지 (색상 매핑)
+- [x] `src/components/layout/header.tsx` — 서비스 공통 헤더
+- [x] `src/components/layout/dashboard-sidebar.tsx` — 대시보드 사이드바 네비게이션
+- [x] `src/components/status-badge.tsx` — 예약 상태 뱃지 (색상 매핑)
 
 ---
 
@@ -321,7 +320,7 @@ src/
 | Phase | 내용 | 완료 |
 |-------|------|------|
 | 0 | 환경 설정, DB 스키마, Seed | ✅ |
-| 1 | shadcn/ui, NextAuth, 미들웨어, 쿼리 레이어, 공통 유틸 | ⬜ |
+| 1 | shadcn/ui, NextAuth, 미들웨어, 쿼리 레이어, 공통 유틸 | ✅ |
 | 2 | 사장님 로그인/회원가입 | ⬜ |
 | 3 | 업체 온보딩/설정 | ⬜ |
 | 4 | 서비스 관리, 영업시간 관리 | ⬜ |
