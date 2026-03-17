@@ -64,12 +64,12 @@
 > 로그인 직후 업체가 없으면 온보딩으로 유도
 
 ### 3-1. 온보딩 페이지
-- [ ] `src/app/(dashboard)/onboarding/page.tsx` — 업체 최초 등록 (이름, slug, 카테고리)
-- [ ] `src/app/api/businesses/route.ts` — GET(내 업체 목록), POST(업체 생성)
+- [x] `src/app/(dashboard)/onboarding/page.tsx` — 업체 최초 등록 (이름, slug, 카테고리)
+- [x] `src/app/api/businesses/route.ts` — GET(내 업체 목록), POST(업체 생성)
 
 ### 3-2. 업체 설정 페이지 (OWN-01)
-- [ ] `src/app/(dashboard)/dashboard/settings/page.tsx` — 업체 기본 정보 수정 폼
-- [ ] `src/app/api/businesses/[id]/route.ts` — PUT(업체 수정), DELETE(비활성화)
+- [x] `src/app/(dashboard)/dashboard/settings/page.tsx` — 업체 기본 정보 수정 폼
+- [x] `src/app/api/businesses/[id]/route.ts` — PUT(업체 수정), DELETE(비활성화)
 
 ---
 
@@ -322,7 +322,7 @@ src/
 | 0 | 환경 설정, DB 스키마, Seed | ✅ |
 | 1 | shadcn/ui, NextAuth, 미들웨어, 쿼리 레이어, 공통 유틸 | ✅ |
 | 2 | 사장님 로그인/회원가입 | ✅ |
-| 3 | 업체 온보딩/설정 | ⬜ |
+| 3 | 업체 온보딩/설정 | ✅ |
 | 4 | 서비스 관리, 영업시간 관리 | ⬜ |
 | 5 | 예약 관리 대시보드, 통계 | ⬜ |
 | 6 | 슬롯 계산 API | ⬜ |
