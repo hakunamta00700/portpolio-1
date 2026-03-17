@@ -9487,167 +9487,6 @@
       "columns": {
         "version": {
           "name": "version",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": true,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        }
-      },
-      "name": "schema_migrations",
-      "schema": "auth",
-      "indexes": [
-        {
-          "columnNames": [
-            "version"
-          ],
-          "composite": false,
-          "constraint": false,
-          "keyName": "schema_migrations_pkey",
-          "unique": true,
-          "primary": true
-        },
-        {
-          "columnNames": [
-            "version"
-          ],
-          "composite": false,
-          "constraint": false,
-          "keyName": "schema_migrations_pkey",
-          "unique": true,
-          "primary": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {},
-      "nativeEnums": {
-        "auth.aal_level": {
-          "name": "aal_level",
-          "schema": "auth",
-          "items": [
-            "aal1",
-            "aal2",
-            "aal3"
-          ]
-        },
-        "realtime.action": {
-          "name": "action",
-          "schema": "realtime",
-          "items": [
-            "INSERT",
-            "UPDATE",
-            "DELETE",
-            "TRUNCATE",
-            "ERROR"
-          ]
-        },
-        "storage.buckettype": {
-          "name": "buckettype",
-          "schema": "storage",
-          "items": [
-            "STANDARD",
-            "ANALYTICS",
-            "VECTOR"
-          ]
-        },
-        "auth.code_challenge_method": {
-          "name": "code_challenge_method",
-          "schema": "auth",
-          "items": [
-            "s256",
-            "plain"
-          ]
-        },
-        "realtime.equality_op": {
-          "name": "equality_op",
-          "schema": "realtime",
-          "items": [
-            "eq",
-            "neq",
-            "lt",
-            "lte",
-            "gt",
-            "gte",
-            "in"
-          ]
-        },
-        "auth.factor_status": {
-          "name": "factor_status",
-          "schema": "auth",
-          "items": [
-            "unverified",
-            "verified"
-          ]
-        },
-        "auth.factor_type": {
-          "name": "factor_type",
-          "schema": "auth",
-          "items": [
-            "totp",
-            "webauthn",
-            "phone"
-          ]
-        },
-        "auth.oauth_authorization_status": {
-          "name": "oauth_authorization_status",
-          "schema": "auth",
-          "items": [
-            "pending",
-            "approved",
-            "denied",
-            "expired"
-          ]
-        },
-        "auth.oauth_client_type": {
-          "name": "oauth_client_type",
-          "schema": "auth",
-          "items": [
-            "public",
-            "confidential"
-          ]
-        },
-        "auth.oauth_registration_type": {
-          "name": "oauth_registration_type",
-          "schema": "auth",
-          "items": [
-            "dynamic",
-            "manual"
-          ]
-        },
-        "auth.oauth_response_type": {
-          "name": "oauth_response_type",
-          "schema": "auth",
-          "items": [
-            "code"
-          ]
-        },
-        "auth.one_time_token_type": {
-          "name": "one_time_token_type",
-          "schema": "auth",
-          "items": [
-            "confirmation_token",
-            "reauthentication_token",
-            "recovery_token",
-            "email_change_token_new",
-            "email_change_token_current",
-            "phone_change_token"
-          ]
-        }
-      },
-      "comment": "Auth: Manages updates to the auth system."
-    },
-    {
-      "columns": {
-        "version": {
-          "name": "version",
           "type": "int8",
           "unsigned": false,
           "autoincrement": false,
@@ -9820,6 +9659,167 @@
         }
       },
       "comment": null
+    },
+    {
+      "columns": {
+        "version": {
+          "name": "version",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        }
+      },
+      "name": "schema_migrations",
+      "schema": "auth",
+      "indexes": [
+        {
+          "columnNames": [
+            "version"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "schema_migrations_pkey",
+          "unique": true,
+          "primary": true
+        },
+        {
+          "columnNames": [
+            "version"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "schema_migrations_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "auth.aal_level": {
+          "name": "aal_level",
+          "schema": "auth",
+          "items": [
+            "aal1",
+            "aal2",
+            "aal3"
+          ]
+        },
+        "realtime.action": {
+          "name": "action",
+          "schema": "realtime",
+          "items": [
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "TRUNCATE",
+            "ERROR"
+          ]
+        },
+        "storage.buckettype": {
+          "name": "buckettype",
+          "schema": "storage",
+          "items": [
+            "STANDARD",
+            "ANALYTICS",
+            "VECTOR"
+          ]
+        },
+        "auth.code_challenge_method": {
+          "name": "code_challenge_method",
+          "schema": "auth",
+          "items": [
+            "s256",
+            "plain"
+          ]
+        },
+        "realtime.equality_op": {
+          "name": "equality_op",
+          "schema": "realtime",
+          "items": [
+            "eq",
+            "neq",
+            "lt",
+            "lte",
+            "gt",
+            "gte",
+            "in"
+          ]
+        },
+        "auth.factor_status": {
+          "name": "factor_status",
+          "schema": "auth",
+          "items": [
+            "unverified",
+            "verified"
+          ]
+        },
+        "auth.factor_type": {
+          "name": "factor_type",
+          "schema": "auth",
+          "items": [
+            "totp",
+            "webauthn",
+            "phone"
+          ]
+        },
+        "auth.oauth_authorization_status": {
+          "name": "oauth_authorization_status",
+          "schema": "auth",
+          "items": [
+            "pending",
+            "approved",
+            "denied",
+            "expired"
+          ]
+        },
+        "auth.oauth_client_type": {
+          "name": "oauth_client_type",
+          "schema": "auth",
+          "items": [
+            "public",
+            "confidential"
+          ]
+        },
+        "auth.oauth_registration_type": {
+          "name": "oauth_registration_type",
+          "schema": "auth",
+          "items": [
+            "dynamic",
+            "manual"
+          ]
+        },
+        "auth.oauth_response_type": {
+          "name": "oauth_response_type",
+          "schema": "auth",
+          "items": [
+            "code"
+          ]
+        },
+        "auth.one_time_token_type": {
+          "name": "one_time_token_type",
+          "schema": "auth",
+          "items": [
+            "confirmation_token",
+            "reauthentication_token",
+            "recovery_token",
+            "email_change_token_new",
+            "email_change_token_current",
+            "phone_change_token"
+          ]
+        }
+      },
+      "comment": "Auth: Manages updates to the auth system."
     },
     {
       "columns": {
@@ -11614,289 +11614,6 @@
     },
     {
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": true,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "email": {
-          "name": "email",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "unique": true,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "password_hash": {
-          "name": "password_hash",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "name": {
-          "name": "name",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "phone": {
-          "name": "phone",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "role": {
-          "name": "role",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": "'owner'",
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "varchar(255)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "unique": false,
-          "length": 255,
-          "precision": null,
-          "scale": null,
-          "default": null,
-          "comment": null,
-          "enumItems": [],
-          "mappedType": "string"
-        }
-      },
-      "name": "users",
-      "schema": "public",
-      "indexes": [
-        {
-          "columnNames": [
-            "email"
-          ],
-          "composite": false,
-          "constraint": true,
-          "keyName": "users_email_unique",
-          "unique": true,
-          "primary": false
-        },
-        {
-          "columnNames": [
-            "id"
-          ],
-          "composite": false,
-          "constraint": false,
-          "keyName": "users_pkey",
-          "unique": true,
-          "primary": true
-        },
-        {
-          "columnNames": [
-            "id"
-          ],
-          "composite": false,
-          "constraint": false,
-          "keyName": "users_pkey",
-          "unique": true,
-          "primary": true
-        }
-      ],
-      "checks": [],
-      "foreignKeys": {},
-      "nativeEnums": {
-        "auth.aal_level": {
-          "name": "aal_level",
-          "schema": "auth",
-          "items": [
-            "aal1",
-            "aal2",
-            "aal3"
-          ]
-        },
-        "realtime.action": {
-          "name": "action",
-          "schema": "realtime",
-          "items": [
-            "INSERT",
-            "UPDATE",
-            "DELETE",
-            "TRUNCATE",
-            "ERROR"
-          ]
-        },
-        "storage.buckettype": {
-          "name": "buckettype",
-          "schema": "storage",
-          "items": [
-            "STANDARD",
-            "ANALYTICS",
-            "VECTOR"
-          ]
-        },
-        "auth.code_challenge_method": {
-          "name": "code_challenge_method",
-          "schema": "auth",
-          "items": [
-            "s256",
-            "plain"
-          ]
-        },
-        "realtime.equality_op": {
-          "name": "equality_op",
-          "schema": "realtime",
-          "items": [
-            "eq",
-            "neq",
-            "lt",
-            "lte",
-            "gt",
-            "gte",
-            "in"
-          ]
-        },
-        "auth.factor_status": {
-          "name": "factor_status",
-          "schema": "auth",
-          "items": [
-            "unverified",
-            "verified"
-          ]
-        },
-        "auth.factor_type": {
-          "name": "factor_type",
-          "schema": "auth",
-          "items": [
-            "totp",
-            "webauthn",
-            "phone"
-          ]
-        },
-        "auth.oauth_authorization_status": {
-          "name": "oauth_authorization_status",
-          "schema": "auth",
-          "items": [
-            "pending",
-            "approved",
-            "denied",
-            "expired"
-          ]
-        },
-        "auth.oauth_client_type": {
-          "name": "oauth_client_type",
-          "schema": "auth",
-          "items": [
-            "public",
-            "confidential"
-          ]
-        },
-        "auth.oauth_registration_type": {
-          "name": "oauth_registration_type",
-          "schema": "auth",
-          "items": [
-            "dynamic",
-            "manual"
-          ]
-        },
-        "auth.oauth_response_type": {
-          "name": "oauth_response_type",
-          "schema": "auth",
-          "items": [
-            "code"
-          ]
-        },
-        "auth.one_time_token_type": {
-          "name": "one_time_token_type",
-          "schema": "auth",
-          "items": [
-            "confirmation_token",
-            "reauthentication_token",
-            "recovery_token",
-            "email_change_token_new",
-            "email_change_token_current",
-            "phone_change_token"
-          ]
-        }
-      },
-      "comment": null
-    },
-    {
-      "columns": {
         "instance_id": {
           "name": "instance_id",
           "type": "uuid",
@@ -12708,6 +12425,289 @@
         }
       },
       "comment": "Auth: Stores user login data within a secure schema."
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": true,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": true,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "phone": {
+          "name": "phone",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": "'owner'",
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": 255,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "string"
+        }
+      },
+      "name": "users",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "email"
+          ],
+          "composite": false,
+          "constraint": true,
+          "keyName": "users_email_unique",
+          "unique": true,
+          "primary": false
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "users_pkey",
+          "unique": true,
+          "primary": true
+        },
+        {
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": false,
+          "keyName": "users_pkey",
+          "unique": true,
+          "primary": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "auth.aal_level": {
+          "name": "aal_level",
+          "schema": "auth",
+          "items": [
+            "aal1",
+            "aal2",
+            "aal3"
+          ]
+        },
+        "realtime.action": {
+          "name": "action",
+          "schema": "realtime",
+          "items": [
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "TRUNCATE",
+            "ERROR"
+          ]
+        },
+        "storage.buckettype": {
+          "name": "buckettype",
+          "schema": "storage",
+          "items": [
+            "STANDARD",
+            "ANALYTICS",
+            "VECTOR"
+          ]
+        },
+        "auth.code_challenge_method": {
+          "name": "code_challenge_method",
+          "schema": "auth",
+          "items": [
+            "s256",
+            "plain"
+          ]
+        },
+        "realtime.equality_op": {
+          "name": "equality_op",
+          "schema": "realtime",
+          "items": [
+            "eq",
+            "neq",
+            "lt",
+            "lte",
+            "gt",
+            "gte",
+            "in"
+          ]
+        },
+        "auth.factor_status": {
+          "name": "factor_status",
+          "schema": "auth",
+          "items": [
+            "unverified",
+            "verified"
+          ]
+        },
+        "auth.factor_type": {
+          "name": "factor_type",
+          "schema": "auth",
+          "items": [
+            "totp",
+            "webauthn",
+            "phone"
+          ]
+        },
+        "auth.oauth_authorization_status": {
+          "name": "oauth_authorization_status",
+          "schema": "auth",
+          "items": [
+            "pending",
+            "approved",
+            "denied",
+            "expired"
+          ]
+        },
+        "auth.oauth_client_type": {
+          "name": "oauth_client_type",
+          "schema": "auth",
+          "items": [
+            "public",
+            "confidential"
+          ]
+        },
+        "auth.oauth_registration_type": {
+          "name": "oauth_registration_type",
+          "schema": "auth",
+          "items": [
+            "dynamic",
+            "manual"
+          ]
+        },
+        "auth.oauth_response_type": {
+          "name": "oauth_response_type",
+          "schema": "auth",
+          "items": [
+            "code"
+          ]
+        },
+        "auth.one_time_token_type": {
+          "name": "one_time_token_type",
+          "schema": "auth",
+          "items": [
+            "confirmation_token",
+            "reauthentication_token",
+            "recovery_token",
+            "email_change_token_new",
+            "email_change_token_current",
+            "phone_change_token"
+          ]
+        }
+      },
+      "comment": null
     },
     {
       "columns": {

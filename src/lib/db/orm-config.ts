@@ -26,12 +26,14 @@ export default defineConfig({
               password: decodeURIComponent(u.password),
               database: u.pathname.replace(/^\//, ''),
               ssl:      { rejectUnauthorized: false },
+              options:  '-c search_path=public',
             },
           },
         }
       })()
   ),
   entities,
+  schema: 'public',
   migrations: {
     path: './src/lib/db/migrations',
   },

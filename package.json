@@ -12,7 +12,8 @@
     "db:migrate:prod": "dotenv -e .env.prod -- mikro-orm migration:up",
     "db:schema:prod": "dotenv -e .env.prod -- mikro-orm schema:update --run",
     "db:seed": "tsx src/lib/db/seed.ts",
-    "db:seed:prod": "dotenv -e .env.prod -- tsx src/lib/db/seed.ts"
+    "db:seed:prod": "dotenv -e .env.prod -- tsx src/lib/db/seed.ts",
+    "db:tablereset:prod": "dotenv -e .env.prod -- mikro-orm schema:drop --run && dotenv -e .env.prod -- mikro-orm migration:up"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
