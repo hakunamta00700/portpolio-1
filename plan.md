@@ -172,20 +172,20 @@
 ## Phase 9. 마무리 및 품질
 
 ### 9-1. 에러 처리
-- [ ] `src/app/not-found.tsx` — 404 페이지
-- [ ] `src/app/error.tsx` — 전역 에러 페이지
-- [ ] `src/app/(customer)/[slug]/not-found.tsx` — 존재하지 않는 업체 slug
+- [x] `src/app/not-found.tsx` — 404 페이지
+- [x] `src/app/error.tsx` — 전역 에러 페이지
+- [x] `src/app/(customer)/[slug]/not-found.tsx` — 존재하지 않는 업체 slug
 
 ### 9-2. 반응형 / UX 개선
-- [ ] 고객 예약 페이지 모바일 최적화 확인 (< 768px)
-- [ ] 대시보드 태블릿 레이아웃 확인 (768px ~)
-- [ ] 로딩 스켈레톤 컴포넌트 (예약 목록, 슬롯 조회)
-- [ ] Toast 알림 (예약 생성 성공/실패, 상태 변경 등)
+- [x] 고객 예약 페이지 모바일 최적화 (< 768px) — 전 컴포넌트 적용
+- [x] 대시보드 태블릿 레이아웃 (768px ~) — 사이드바 md:block
+- [x] 로딩 스켈레톤 컴포넌트 (예약 목록, 슬롯 조회) — Skeleton 적용
+- [x] Toast 알림 (예약 생성 성공/실패, 상태 변경 등) — sonner 적용
 
 ### 9-3. 보안
-- [ ] API Route 입력값 Zod 검증 전 적용 확인
-- [ ] 사장님 API 소유권 검증 (본인 업체만 수정 가능)
-- [ ] Rate limiting 검토 (예약 생성 API)
+- [x] API Route 입력값 Zod 검증 전 적용 확인 — 모든 API 적용
+- [x] 사장님 API 소유권 검증 (본인 업체만 수정 가능) — checkOwner 패턴 적용
+- [x] Rate limiting 검토 (예약 생성 API) — 슬롯 재검증으로 동시성 제어
 
 ---
 
@@ -328,5 +328,5 @@ src/
 | 6 | 슬롯 계산 API | ✅ |
 | 7 | 고객 예약 페이지 전체 플로우 | ✅ |
 | 8 | 이메일 알림 | ✅ |
-| 9 | 에러 처리, 반응형, 보안 | ⬜ |
+| 9 | 에러 처리, 반응형, 보안 | ✅ |
 | 10 | Supabase + Vercel 배포 | ⬜ |
