@@ -1,25 +1,20 @@
-import { drizzle as drizzleSQLite } from 'drizzle-orm/better-sqlite3'
-import Database from 'better-sqlite3'
-import * as schema from './schema'
+import { MikroORM, EntityManager } from '@mikro-orm/core'
+import config from './orm-config'
 
-// 현재는 SQLite만 지원 (개발환경)
-// 운영환경(Supabase PostgreSQL) 전환 시 drizzle-orm/postgres-js 로 교체
-function createDb() {
-  const url = process.env.DATABASE_URL ?? 'file:./dev.db'
-  const filePath = url.replace('file:', '')
-  const sqlite = new Database(filePath)
-
-  // WAL 모드: 읽기/쓰기 동시성 향상
-  sqlite.pragma('journal_mode = WAL')
-
-  return drizzleSQLite(sqlite, { schema })
-}
-
-// 싱글톤 (Next.js dev 핫 리로드 시 중복 연결 방지)
 declare global {
   // eslint-disable-next-line no-var
-  var _db: ReturnType<typeof createDb> | undefined
+  var _mikro_orm: MikroORM | undefined
 }
 
-export const db = globalThis._db ?? createDb()
-if (process.env.NODE_ENV !== 'production') globalThis._db = db
+async function getORM(): Promise<MikroORM> {
+  if (!globalThis._mikro_orm) {
+    globalThis._mikro_orm = await MikroORM.init(config)
+  }
+  return globalThis._mikro_orm
+}
+
+// 요청마다 독립된 EntityManager fork 반환
+export async function getEM(): Promise<EntityManager> {
+  const orm = await getORM()
+  return orm.em.fork()
+}

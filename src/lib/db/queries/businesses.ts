@@ -1,37 +1,42 @@
-import { eq } from 'drizzle-orm'
-import { db } from '@/lib/db'
-import { businesses, type NewBusiness } from '@/lib/db/schema'
+import { getEM } from '@/lib/db'
+import { BusinessSchema, type Business, type NewBusiness } from '@/lib/db/entities'
 
-export async function getBusinessesByOwner(ownerId: string) {
-  return db.select().from(businesses).where(eq(businesses.ownerId, ownerId))
+export async function getBusinessesByOwner(ownerId: string): Promise<Business[]> {
+  const em = await getEM()
+  return em.find(BusinessSchema, { ownerId })
 }
 
-export async function getBusinessById(id: string) {
-  return db.select().from(businesses).where(eq(businesses.id, id)).limit(1).then((r) => r[0] ?? null)
+export async function getBusinessById(id: string): Promise<Business | null> {
+  const em = await getEM()
+  return em.findOne(BusinessSchema, { id })
 }
 
-export async function getBusinessBySlug(slug: string) {
-  return db.select().from(businesses).where(eq(businesses.slug, slug)).limit(1).then((r) => r[0] ?? null)
+export async function getBusinessBySlug(slug: string): Promise<Business | null> {
+  const em = await getEM()
+  return em.findOne(BusinessSchema, { slug })
 }
 
-export async function createBusiness(data: NewBusiness) {
-  return db.insert(businesses).values(data).returning().then((r) => r[0])
+export async function createBusiness(data: NewBusiness): Promise<Business> {
+  const em = await getEM()
+  const business = em.create(BusinessSchema, data)
+  await em.persistAndFlush(business)
+  return business
 }
 
-export async function updateBusiness(id: string, data: Partial<NewBusiness>) {
-  return db
-    .update(businesses)
-    .set({ ...data, updatedAt: new Date().toISOString() })
-    .where(eq(businesses.id, id))
-    .returning()
-    .then((r) => r[0])
+export async function updateBusiness(id: string, data: Partial<NewBusiness>): Promise<Business | null> {
+  const em = await getEM()
+  const business = await em.findOne(BusinessSchema, { id })
+  if (!business) return null
+  em.assign(business, data)
+  await em.flush()
+  return business
 }
 
-export async function deactivateBusiness(id: string) {
-  return db
-    .update(businesses)
-    .set({ isActive: false, updatedAt: new Date().toISOString() })
-    .where(eq(businesses.id, id))
-    .returning()
-    .then((r) => r[0])
+export async function deactivateBusiness(id: string): Promise<Business | null> {
+  const em = await getEM()
+  const business = await em.findOne(BusinessSchema, { id })
+  if (!business) return null
+  em.assign(business, { isActive: false })
+  await em.flush()
+  return business
 }

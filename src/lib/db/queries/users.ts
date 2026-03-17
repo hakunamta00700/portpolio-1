@@ -1,15 +1,19 @@
-import { eq } from 'drizzle-orm'
-import { db } from '@/lib/db'
-import { users, type NewUser } from '@/lib/db/schema'
+import { getEM } from '@/lib/db'
+import { UserSchema, type User, type NewUser } from '@/lib/db/entities'
 
-export async function getUserByEmail(email: string) {
-  return db.select().from(users).where(eq(users.email, email)).limit(1).then((r) => r[0] ?? null)
+export async function getUserByEmail(email: string): Promise<User | null> {
+  const em = await getEM()
+  return em.findOne(UserSchema, { email })
 }
 
-export async function getUserById(id: string) {
-  return db.select().from(users).where(eq(users.id, id)).limit(1).then((r) => r[0] ?? null)
+export async function getUserById(id: string): Promise<User | null> {
+  const em = await getEM()
+  return em.findOne(UserSchema, { id })
 }
 
-export async function createUser(data: NewUser) {
-  return db.insert(users).values(data).returning().then((r) => r[0])
+export async function createUser(data: NewUser): Promise<User> {
+  const em = await getEM()
+  const user = em.create(UserSchema, data)
+  await em.persistAndFlush(user)
+  return user
 }
