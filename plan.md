@@ -76,22 +76,22 @@
 ## Phase 4. 사장님 대시보드 - 서비스/스케줄 관리
 
 ### 4-1. 대시보드 레이아웃
-- [ ] `src/app/(dashboard)/layout.tsx` — 인증 체크 + 사이드바 레이아웃
-- [ ] `src/app/(dashboard)/dashboard/layout.tsx` — 업체 컨텍스트 (현재 선택 업체)
+- [x] `src/app/(dashboard)/layout.tsx` — 인증 체크 + 사이드바 레이아웃
+- [x] `src/app/(dashboard)/dashboard/layout.tsx` — 업체 컨텍스트 (현재 선택 업체)
 
 ### 4-2. 서비스 관리 (OWN-02)
-- [ ] `src/app/(dashboard)/dashboard/services/page.tsx` — 서비스 목록 + 추가/수정/삭제 UI
-- [ ] `src/components/services/service-form.tsx` — 서비스 추가/수정 모달 폼
-- [ ] `src/app/api/businesses/[businessId]/services/route.ts` — GET, POST
-- [ ] `src/app/api/businesses/[businessId]/services/[serviceId]/route.ts` — PUT, DELETE
+- [x] `src/app/(dashboard)/dashboard/services/page.tsx` — 서비스 목록 + 추가/수정/삭제 UI
+- [x] `src/components/services/service-form.tsx` — 서비스 추가/수정 모달 폼
+- [x] `src/app/api/businesses/[businessId]/services/route.ts` — GET, POST
+- [x] `src/app/api/businesses/[businessId]/services/[serviceId]/route.ts` — PUT, DELETE
 
 ### 4-3. 영업시간 관리 (OWN-05)
-- [ ] `src/app/(dashboard)/dashboard/schedule/page.tsx` — 요일별 영업시간 + 휴무일 설정 UI
-- [ ] `src/components/schedule/weekday-schedule.tsx` — 요일별 시간 설정 컴포넌트
-- [ ] `src/components/schedule/blocked-date-picker.tsx` — 휴무일 달력 선택 컴포넌트
-- [ ] `src/app/api/businesses/[businessId]/schedules/route.ts` — GET, PUT(일괄 수정)
-- [ ] `src/app/api/businesses/[businessId]/blocked-dates/route.ts` — GET, POST
-- [ ] `src/app/api/businesses/[businessId]/blocked-dates/[date]/route.ts` — DELETE
+- [x] `src/app/(dashboard)/dashboard/schedule/page.tsx` — 요일별 영업시간 + 휴무일 설정 UI
+- [x] `src/components/schedule/weekday-schedule.tsx` — 요일별 시간 설정 컴포넌트
+- [x] `src/components/schedule/blocked-date-picker.tsx` — 휴무일 달력 선택 컴포넌트
+- [x] `src/app/api/businesses/[businessId]/schedules/route.ts` — GET, PUT(일괄 수정)
+- [x] `src/app/api/businesses/[businessId]/blocked-dates/route.ts` — GET, POST
+- [x] `src/app/api/businesses/[businessId]/blocked-dates/[date]/route.ts` — DELETE
 
 ---
 
@@ -323,7 +323,7 @@ src/
 | 1 | shadcn/ui, NextAuth, 미들웨어, 쿼리 레이어, 공통 유틸 | ✅ |
 | 2 | 사장님 로그인/회원가입 | ✅ |
 | 3 | 업체 온보딩/설정 | ✅ |
-| 4 | 서비스 관리, 영업시간 관리 | ⬜ |
+| 4 | 서비스 관리, 영업시간 관리 | ✅ |
 | 5 | 예약 관리 대시보드, 통계 | ⬜ |
 | 6 | 슬롯 계산 API | ⬜ |
 | 7 | 고객 예약 페이지 전체 플로우 | ⬜ |
