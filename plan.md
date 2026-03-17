@@ -195,7 +195,7 @@
 - [ ] Supabase 프로젝트 생성 (리전: ap-northeast-1 Tokyo)
 - [ ] `supabase link --project-ref [ref]`
 - [ ] `supabase db push` — 마이그레이션 적용
-- [ ] RLS 정책 적용 (`docs/03_database-schema.md` 참고)
+- [ ] RLS 정책 적용
 - [ ] Storage 버킷 생성 (`business-assets`, public)
 
 ### 10-2. Vercel 배포
@@ -203,6 +203,8 @@
 - [ ] Vercel 환경변수 설정 (`DATABASE_URL`, `NEXTAUTH_SECRET`, `SUPABASE_*`, `RESEND_API_KEY`)
 - [ ] 도메인 설정 (선택)
 - [ ] 배포 후 전체 플로우 테스트
+
+> Phase 10은 실제 계정(Supabase, Vercel) 생성 후 진행 필요
 
 ---
 

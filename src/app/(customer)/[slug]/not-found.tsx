@@ -8,9 +8,7 @@ export default function SlugNotFound() {
         <h1 className="text-4xl font-bold text-gray-300 mb-2">404</h1>
         <p className="text-xl font-semibold text-gray-700 mb-1">업체를 찾을 수 없습니다</p>
         <p className="text-gray-500 mb-6">URL 주소를 다시 확인해주세요</p>
-        <Button asChild>
-          <Link href="/">홈으로</Link>
-        </Button>
+        <Button render={<Link href="/" />}>홈으로</Button>
       </div>
     </div>
   )

@@ -19,11 +19,11 @@ import {
 const schema = z.object({
   name: z.string().min(1, '서비스명을 입력해주세요'),
   description: z.string().optional(),
-  duration: z.coerce.number().int().min(10, '최소 10분 이상'),
-  price: z.coerce.number().int().min(0, '0 이상'),
+  duration: z.union([z.string(), z.number()]).transform((v) => parseInt(String(v), 10)).pipe(z.number().int().min(10, '최소 10분 이상')),
+  price: z.union([z.string(), z.number()]).transform((v) => parseInt(String(v), 10)).pipe(z.number().int().min(0, '0 이상')),
 })
 
-export type ServiceFormData = z.infer<typeof schema>
+export type ServiceFormData = { name: string; description?: string; duration: number; price: number }
 
 interface ServiceFormProps {
   initialData?: Partial<ServiceFormData>
@@ -38,7 +38,8 @@ export function ServiceForm({ initialData, onSubmit, onCancel, title = '서비�
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<ServiceFormData>({ resolver: zodResolver(schema) })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } = useForm<ServiceFormData>({ resolver: zodResolver(schema) as any })
 
   useEffect(() => {
     if (initialData) reset(initialData)

@@ -90,12 +90,8 @@ export default function ConfirmPage({ params }: { params: Promise<{ slug: string
       )}
 
       <div className="space-y-3">
-        <Button variant="outline" className="w-full" asChild>
-          <Link href={`/${slug}/lookup`}>예약 조회/취소</Link>
-        </Button>
-        <Button variant="ghost" className="w-full" asChild>
-          <Link href={`/${slug}`}>처음으로</Link>
-        </Button>
+        <Button variant="outline" className="w-full" render={<Link href={`/${slug}/lookup`} />}>예약 조회/취소</Button>
+        <Button variant="ghost" className="w-full" render={<Link href={`/${slug}`} />}>처음으로</Button>
       </div>
     </div>
   )

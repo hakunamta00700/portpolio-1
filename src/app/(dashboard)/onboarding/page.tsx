@@ -80,7 +80,7 @@ export default function OnboardingPage() {
 
             <div className="space-y-1">
               <Label>카테고리 *</Label>
-              <Select onValueChange={(v) => setValue('category', v)}>
+              <Select onValueChange={(v) => setValue('category', String(v ?? ''))}>
                 <SelectTrigger>
                   <SelectValue placeholder="카테고리 선택" />
                 </SelectTrigger>

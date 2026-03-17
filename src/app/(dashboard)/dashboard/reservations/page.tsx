@@ -82,7 +82,7 @@ export default function ReservationsPage() {
           value={filterDate}
           onChange={(e) => setFilterDate(e.target.value)}
         />
-        <Select value={filterStatus} onValueChange={setFilterStatus}>
+        <Select value={filterStatus} onValueChange={(v) => setFilterStatus(v ?? '')}>
           <SelectTrigger className="w-36">
             <SelectValue placeholder="전체 상태" />
           </SelectTrigger>

@@ -9,12 +9,8 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
           <span className="text-xl font-bold text-blue-600">ReserveOS</span>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" asChild>
-              <Link href="/login">로그인</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/signup">무료 시작하기</Link>
-            </Button>
+            <Button variant="ghost" render={<Link href="/login" />}>로그인</Button>
+            <Button render={<Link href="/signup" />}>무료 시작하기</Button>
           </div>
         </div>
       </header>
@@ -28,12 +24,8 @@ export default function HomePage() {
             링크 하나로 고객이 직접 예약하고, 사장님은 한눈에 관리하세요.
           </p>
           <div className="flex justify-center gap-3 flex-wrap">
-            <Button size="lg" asChild>
-              <Link href="/signup">지금 시작하기 →</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/demo-shop">데모 예약 페이지</Link>
-            </Button>
+            <Button size="lg" render={<Link href="/signup" />}>지금 시작하기 →</Button>
+            <Button size="lg" variant="outline" render={<Link href="/demo-shop" />}>데모 예약 페이지</Button>
           </div>
         </section>
 

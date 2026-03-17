@@ -14,19 +14,31 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { CATEGORY_LABELS, type BusinessCategory } from '@/types'
 import { toast } from 'sonner'
 
+const numField = z.union([z.string(), z.number()]).transform((v) => parseInt(String(v), 10))
+
 const schema = z.object({
   name: z.string().min(2),
   description: z.string().optional(),
   address: z.string().optional(),
   phone: z.string().optional(),
   category: z.string().optional(),
-  slotDuration: z.coerce.number().int().min(15),
-  maxAdvanceDays: z.coerce.number().int().min(1),
-  minAdvanceHours: z.coerce.number().int().min(0),
-  cancelPolicyHours: z.coerce.number().int().min(0),
+  slotDuration: numField,
+  maxAdvanceDays: numField,
+  minAdvanceHours: numField,
+  cancelPolicyHours: numField,
 })
 
-type FormData = z.infer<typeof schema>
+type FormData = {
+  name: string
+  description?: string
+  address?: string
+  phone?: string
+  category?: string
+  slotDuration: number
+  maxAdvanceDays: number
+  minAdvanceHours: number
+  cancelPolicyHours: number
+}
 
 export default function SettingsPage() {
   const [businessId, setBusinessId] = useState<string | null>(null)
@@ -38,7 +50,8 @@ export default function SettingsPage() {
     reset,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>({ resolver: zodResolver(schema) })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } = useForm<FormData>({ resolver: zodResolver(schema) as any })
 
   useEffect(() => {
     fetch('/api/businesses')
@@ -100,7 +113,7 @@ export default function SettingsPage() {
             </div>
             <div className="space-y-1">
               <Label>카테고리</Label>
-              <Select onValueChange={(v) => setValue('category', v)}>
+              <Select onValueChange={(v) => setValue('category', String(v ?? ''))}>
                 <SelectTrigger>
                   <SelectValue placeholder="카테고리 선택" />
                 </SelectTrigger>

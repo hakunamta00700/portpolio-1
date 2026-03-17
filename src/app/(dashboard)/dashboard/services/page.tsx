@@ -124,7 +124,7 @@ export default function ServicesPage() {
             {editingService?.id === service.id ? (
               <ServiceForm
                 title="서비스 수정"
-                initialData={service}
+                initialData={{ ...service, description: service.description ?? undefined }}
                 onSubmit={handleUpdate}
                 onCancel={() => setEditingService(null)}
               />
