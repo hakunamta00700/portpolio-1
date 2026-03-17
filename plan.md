@@ -98,19 +98,19 @@
 ## Phase 5. 사장님 대시보드 - 예약 관리
 
 ### 5-1. 대시보드 홈 (OWN-03)
-- [ ] `src/app/(dashboard)/dashboard/page.tsx` — 오늘 예약 현황 (카드 요약 + 타임라인)
-- [ ] `src/components/reservations/today-timeline.tsx` — 시간순 예약 목록 컴포넌트
-- [ ] `src/app/api/businesses/[businessId]/reservations/route.ts` — GET(필터: 날짜, 상태, 페이지)
+- [x] `src/app/(dashboard)/dashboard/page.tsx` — 오늘 예약 현황 (카드 요약 + 타임라인)
+- [x] `src/components/reservations/today-timeline.tsx` — 시간순 예약 목록 컴포넌트
+- [x] `src/app/api/businesses/[businessId]/reservations/route.ts` — GET(필터: 날짜, 상태, 페이지)
 
 ### 5-2. 예약 관리 페이지 (OWN-04)
-- [ ] `src/app/(dashboard)/dashboard/reservations/page.tsx` — 전체 예약 목록 + 필터
-- [ ] `src/components/reservations/reservation-card.tsx` — 예약 카드 (고객 정보, 상태, 액션)
-- [ ] `src/components/reservations/reservation-detail-modal.tsx` — 예약 상세 + 메모 + 상태변경
-- [ ] `src/app/api/businesses/[businessId]/reservations/[reservationId]/route.ts` — PUT(상태 변경)
+- [x] `src/app/(dashboard)/dashboard/reservations/page.tsx` — 전체 예약 목록 + 필터
+- [x] `src/components/reservations/reservation-card.tsx` — 예약 카드 (고객 정보, 상태, 액션)
+- [x] `src/components/reservations/reservation-detail-modal.tsx` — 예약 상세 + 메모 + 상태변경
+- [x] `src/app/api/businesses/[businessId]/reservations/[reservationId]/route.ts` — PUT(상태 변경)
 
 ### 5-3. 통계 페이지 (OWN-07)
-- [ ] `src/app/(dashboard)/dashboard/stats/page.tsx` — 기간 선택 + 예약 건수/매출/인기서비스
-- [ ] `src/app/api/businesses/[businessId]/stats/route.ts` — GET
+- [x] `src/app/(dashboard)/dashboard/stats/page.tsx` — 기간 선택 + 예약 건수/매출/인기서비스
+- [x] `src/app/api/businesses/[businessId]/stats/route.ts` — GET
 
 ---
 
@@ -324,7 +324,7 @@ src/
 | 2 | 사장님 로그인/회원가입 | ✅ |
 | 3 | 업체 온보딩/설정 | ✅ |
 | 4 | 서비스 관리, 영업시간 관리 | ✅ |
-| 5 | 예약 관리 대시보드, 통계 | ⬜ |
+| 5 | 예약 관리 대시보드, 통계 | ✅ |
 | 6 | 슬롯 계산 API | ⬜ |
 | 7 | 고객 예약 페이지 전체 플로우 | ⬜ |
 | 8 | 이메일 알림 | ⬜ |
