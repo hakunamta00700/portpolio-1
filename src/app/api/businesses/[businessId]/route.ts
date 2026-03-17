@@ -16,12 +16,12 @@ const updateSchema = z.object({
   cancelPolicyHours: z.number().int().min(0).optional(),
 })
 
-export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ businessId: string }> }) {
   const session = await getServerSession(authOptions)
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { id } = await params
-  const business = await getBusinessById(id)
+  const { businessId } = await params
+  const business = await getBusinessById(businessId)
   if (!business) return NextResponse.json({ error: 'Not found' }, { status: 404 })
   if (business.ownerId !== session.user.id)
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -32,20 +32,20 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 })
   }
 
-  const updated = await updateBusiness(id, parsed.data)
+  const updated = await updateBusiness(businessId, parsed.data)
   return NextResponse.json(updated)
 }
 
-export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ businessId: string }> }) {
   const session = await getServerSession(authOptions)
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { id } = await params
-  const business = await getBusinessById(id)
+  const { businessId } = await params
+  const business = await getBusinessById(businessId)
   if (!business) return NextResponse.json({ error: 'Not found' }, { status: 404 })
   if (business.ownerId !== session.user.id)
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
-  await deactivateBusiness(id)
+  await deactivateBusiness(businessId)
   return NextResponse.json({ ok: true })
 }
