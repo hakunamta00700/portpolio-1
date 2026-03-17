@@ -46,8 +46,8 @@ export function Header() {
               </DropdownMenu>
             ) : (
               <>
-                <Button variant="ghost" render={<Link href="/login" />}>로그인</Button>
-                <Button render={<Link href="/signup" />}>시작하기</Button>
+                <Button variant="ghost" nativeButton={false} render={<Link href="/login" />}>로그인</Button>
+                <Button nativeButton={false} render={<Link href="/signup" />}>시작하기</Button>
               </>
             )}
           </nav>
