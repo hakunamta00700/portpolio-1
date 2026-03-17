@@ -6,6 +6,10 @@ import { createReservation, getReservationsByDate } from '@/lib/db/queries/reser
 import { getSchedulesByBusiness, getBlockedDatesByBusiness } from '@/lib/db/queries/schedules'
 import { calculateSlots } from '@/lib/slots'
 import { generateReservationNo } from '@/lib/reservation-no'
+import { sendEmail } from '@/lib/email/send'
+import { bookingConfirmedHtml } from '@/lib/email/templates/booking-confirmed'
+import { newBookingOwnerHtml } from '@/lib/email/templates/new-booking-owner'
+import { getUserById } from '@/lib/db/queries/users'
 
 const schema = z.object({
   businessId: z.string(),
@@ -94,6 +98,48 @@ export async function POST(req: NextRequest) {
       customerMemo: customer.memo,
     }
   )
+
+  // 이메일 알림 비동기 발송 (실패해도 예약은 완료)
+  const owner = await getUserById(business.ownerId)
+  const dateFormatted = `${date.slice(0, 4)}년 ${parseInt(date.slice(5, 7))}월 ${parseInt(date.slice(8, 10))}일`
+
+  if (customer.email) {
+    sendEmail({
+      to: customer.email,
+      subject: `[ReserveOS] 예약이 접수되었습니다 - ${reservationNo}`,
+      html: bookingConfirmedHtml({
+        customerName: customer.name,
+        businessName: business.name,
+        serviceName: service.name,
+        date: dateFormatted,
+        startTime,
+        reservationNo,
+        businessSlug: business.slug,
+      }),
+      reservationId: reservation.id,
+      template: 'booking_confirmed',
+    }).catch(console.error)
+  }
+
+  if (owner?.email) {
+    sendEmail({
+      to: owner.email,
+      subject: `[ReserveOS] 새 예약 알림 - ${customer.name}님`,
+      html: newBookingOwnerHtml({
+        ownerName: owner.name,
+        businessName: business.name,
+        customerName: customer.name,
+        customerPhone: customer.phone,
+        serviceName: service.name,
+        date: dateFormatted,
+        startTime,
+        reservationNo,
+        customerMemo: customer.memo,
+      }),
+      reservationId: reservation.id,
+      template: 'new_booking_owner',
+    }).catch(console.error)
+  }
 
   return NextResponse.json({ reservationNo: reservation.reservationNo }, { status: 201 })
 }

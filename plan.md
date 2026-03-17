@@ -160,12 +160,12 @@
 
 ## Phase 8. 이메일 알림
 
-- [ ] `src/lib/email/templates/booking-confirmed.tsx` — 예약 완료 이메일 템플릿 (React Email)
-- [ ] `src/lib/email/templates/booking-cancelled.tsx` — 예약 취소 이메일 템플릿
-- [ ] `src/lib/email/templates/new-booking-owner.tsx` — 사장님용 신규 예약 알림 템플릿
-- [ ] `src/lib/email/send.ts` — Resend API 발송 함수 + notifications 테이블 기록
-- [ ] 예약 생성 API에 이메일 발송 연동
-- [ ] 예약 상태 변경 API에 이메일 발송 연동
+- [x] `src/lib/email/templates/booking-confirmed.tsx` — 예약 완료 이메일 템플릿
+- [x] `src/lib/email/templates/booking-cancelled.tsx` — 예약 취소 이메일 템플릿
+- [x] `src/lib/email/templates/new-booking-owner.tsx` — 사장님용 신규 예약 알림 템플릿
+- [x] `src/lib/email/send.ts` — Resend API 발송 함수 + notifications 테이블 기록
+- [x] 예약 생성 API에 이메일 발송 연동
+- [x] 예약 상태 변경 API에 이메일 발송 연동
 
 ---
 
@@ -327,6 +327,6 @@ src/
 | 5 | 예약 관리 대시보드, 통계 | ✅ |
 | 6 | 슬롯 계산 API | ✅ |
 | 7 | 고객 예약 페이지 전체 플로우 | ✅ |
-| 8 | 이메일 알림 | ⬜ |
+| 8 | 이메일 알림 | ✅ |
 | 9 | 에러 처리, 반응형, 보안 | ⬜ |
 | 10 | Supabase + Vercel 배포 | ⬜ |

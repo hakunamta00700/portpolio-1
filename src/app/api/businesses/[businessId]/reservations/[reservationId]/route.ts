@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { authOptions } from '@/lib/auth'
 import { getBusinessById } from '@/lib/db/queries/businesses'
 import { getReservationById, updateReservationStatus } from '@/lib/db/queries/reservations'
+import { sendEmail } from '@/lib/email/send'
+import { bookingCancelledHtml } from '@/lib/email/templates/booking-cancelled'
 
 const updateSchema = z.object({
   status: z.enum(['pending', 'confirmed', 'completed', 'no_show', 'cancelled']),
@@ -36,5 +38,27 @@ export async function PUT(
     ownerMemo: parsed.data.ownerMemo,
     cancelReason: parsed.data.cancelReason,
   })
+
+  // 취소 시 고객 이메일 알림
+  if (parsed.data.status === 'cancelled' && row.customer.email) {
+    const d = row.reservation.date
+    const dateFormatted = `${d.slice(0, 4)}년 ${parseInt(d.slice(5, 7))}월 ${parseInt(d.slice(8, 10))}일`
+    sendEmail({
+      to: row.customer.email,
+      subject: `[ReserveOS] 예약이 취소되었습니다 - ${row.reservation.reservationNo}`,
+      html: bookingCancelledHtml({
+        customerName: row.customer.name,
+        businessName: business.name,
+        serviceName: row.service.name,
+        date: dateFormatted,
+        startTime: row.reservation.startTime,
+        reservationNo: row.reservation.reservationNo,
+        cancelReason: parsed.data.cancelReason,
+      }),
+      reservationId,
+      template: 'booking_cancelled',
+    }).catch(console.error)
+  }
+
   return NextResponse.json(updated)
 }
