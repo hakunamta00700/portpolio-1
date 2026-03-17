@@ -50,12 +50,12 @@
 ## Phase 2. 사장님 인증
 
 ### 2-1. 회원가입
-- [ ] `src/app/(auth)/signup/page.tsx` — 회원가입 폼 UI
-- [ ] `src/app/api/auth/signup/route.ts` — POST: 이메일 중복 확인, bcrypt 해싱, 사용자 생성
+- [x] `src/app/(auth)/signup/page.tsx` — 회원가입 폼 UI
+- [x] `src/app/api/auth/signup/route.ts` — POST: 이메일 중복 확인, bcrypt 해싱, 사용자 생성
 
 ### 2-2. 로그인
-- [ ] `src/app/(auth)/login/page.tsx` — 로그인 폼 UI (NextAuth signIn 호출)
-- [ ] `src/app/(auth)/layout.tsx` — 인증 페이지 레이아웃 (로고 + 중앙 정렬)
+- [x] `src/app/(auth)/login/page.tsx` — 로그인 폼 UI (NextAuth signIn 호출)
+- [x] `src/app/(auth)/layout.tsx` — 인증 페이지 레이아웃 (로고 + 중앙 정렬)
 
 ---
 
@@ -321,7 +321,7 @@ src/
 |-------|------|------|
 | 0 | 환경 설정, DB 스키마, Seed | ✅ |
 | 1 | shadcn/ui, NextAuth, 미들웨어, 쿼리 레이어, 공통 유틸 | ✅ |
-| 2 | 사장님 로그인/회원가입 | ⬜ |
+| 2 | 사장님 로그인/회원가입 | ✅ |
 | 3 | 업체 온보딩/설정 | ⬜ |
 | 4 | 서비스 관리, 영업시간 관리 | ⬜ |
 | 5 | 예약 관리 대시보드, 통계 | ⬜ |
