@@ -131,30 +131,30 @@
 ## Phase 7. 고객 예약 페이지
 
 ### 7-1. 업체 소개 + 서비스 선택 (CUS-01, CUS-02)
-- [ ] `src/app/(customer)/[slug]/page.tsx` — 업체 정보 + 서비스 목록 (SSR)
-- [ ] `src/app/(customer)/layout.tsx` — 고객용 레이아웃
-- [ ] `src/app/api/businesses/[slug]/public/route.ts` — GET(공개 업체 정보 + 서비스 포함)
-- [ ] `src/components/customer/business-header.tsx` — 업체명, 주소, 영업시간 표시
-- [ ] `src/components/customer/service-card.tsx` — 서비스 카드 (이름, 시간, 가격, 선택 버튼)
+- [x] `src/app/(customer)/[slug]/page.tsx` — 업체 정보 + 서비스 목록 (SSR)
+- [x] `src/app/(customer)/layout.tsx` — 고객용 레이아웃
+- [x] `src/app/api/businesses/[slug]/public/route.ts` — GET(공개 업체 정보 + 서비스 포함)
+- [x] `src/components/customer/business-header.tsx` — 업체명, 주소, 영업시간 표시
+- [x] `src/components/customer/service-card.tsx` — 서비스 카드 (이름, 시간, 가격, 선택 버튼)
 
 ### 7-2. 예약 진행 - 날짜/시간 선택 (CUS-03)
-- [ ] `src/app/(customer)/[slug]/book/page.tsx` — 3단계 예약 플로우 (CSR)
-- [ ] `src/components/customer/booking/step-indicator.tsx` — Step 1/2/3 진행 표시
-- [ ] `src/components/customer/booking/date-picker.tsx` — 달력 (예약 가능 날짜 강조)
-- [ ] `src/components/customer/booking/time-slot-picker.tsx` — 가용 슬롯 버튼 그리드
+- [x] `src/app/(customer)/[slug]/book/page.tsx` — 3단계 예약 플로우 (CSR)
+- [x] `src/components/customer/booking/step-indicator.tsx` — Step 1/2/3 진행 표시
+- [x] `src/components/customer/booking/date-picker.tsx` — 달력 (예약 가능 날짜 강조)
+- [x] `src/components/customer/booking/time-slot-picker.tsx` — 가용 슬롯 버튼 그리드
 
 ### 7-3. 예약자 정보 입력 + 확정 (CUS-04, CUS-05)
-- [ ] `src/components/customer/booking/customer-form.tsx` — 이름/연락처/이메일/요청사항 폼
-- [ ] `src/components/customer/booking/booking-summary.tsx` — 예약 내용 최종 확인
-- [ ] `src/app/api/reservations/route.ts` — POST(예약 생성 + 동시성 제어)
+- [x] `src/components/customer/booking/customer-form.tsx` — 이름/연락처/이메일/요청사항 폼
+- [x] `src/components/customer/booking/booking-summary.tsx` — 예약 내용 최종 확인
+- [x] `src/app/api/reservations/route.ts` — POST(예약 생성 + 동시성 제어)
 
 ### 7-4. 예약 완료 페이지 (CUS-05)
-- [ ] `src/app/(customer)/[slug]/confirm/page.tsx` — 예약번호 + 내용 확인 + 안내
+- [x] `src/app/(customer)/[slug]/confirm/page.tsx` — 예약번호 + 내용 확인 + 안내
 
 ### 7-5. 예약 조회/취소 (CUS-06)
-- [ ] `src/app/(customer)/[slug]/lookup/page.tsx` — 예약번호 + 전화번호 조회 폼
-- [ ] `src/app/api/reservations/lookup/route.ts` — GET(`?reservation_no=&phone=`)
-- [ ] `src/app/api/reservations/[reservationNo]/cancel/route.ts` — POST(취소, 정책 검증)
+- [x] `src/app/(customer)/[slug]/lookup/page.tsx` — 예약번호 + 전화번호 조회 폼
+- [x] `src/app/api/reservations/lookup/route.ts` — GET(`?reservation_no=&phone=`)
+- [x] `src/app/api/reservations/[reservationNo]/cancel/route.ts` — POST(취소, 정책 검증)
 
 ---
 
@@ -326,7 +326,7 @@ src/
 | 4 | 서비스 관리, 영업시간 관리 | ✅ |
 | 5 | 예약 관리 대시보드, 통계 | ✅ |
 | 6 | 슬롯 계산 API | ✅ |
-| 7 | 고객 예약 페이지 전체 플로우 | ⬜ |
+| 7 | 고객 예약 페이지 전체 플로우 | ✅ |
 | 8 | 이메일 알림 | ⬜ |
 | 9 | 에러 처리, 반응형, 보안 | ⬜ |
 | 10 | Supabase + Vercel 배포 | ⬜ |
