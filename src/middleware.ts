@@ -1,6 +1,11 @@
-export { default } from 'next-auth/middleware'
+import { withAuth } from 'next-auth/middleware'
+
+export default withAuth({
+  pages: {
+    signIn: '/login',
+  },
+})
 
 export const config = {
-  // 대시보드/온보딩 라우트 보호
   matcher: ['/dashboard/:path*', '/onboarding/:path*'],
 }

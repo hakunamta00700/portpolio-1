@@ -48,7 +48,7 @@ export default function BookPage({ params }: { params: Promise<{ slug: string }>
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    fetch(`/api/businesses/${slug}/public`)
+    fetch(`/api/public/${slug}`)
       .then((r) => r.json())
       .then(setBizData)
       .catch(() => router.push('/'))
