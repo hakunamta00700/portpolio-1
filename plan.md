@@ -118,13 +118,13 @@
 
 > 고객 예약 페이지의 핵심 로직, 별도 Phase로 분리
 
-- [ ] `src/lib/slots.ts` — 슬롯 계산 순수 함수 (영업시간 + 휴무일 + 기존예약 → 가능 슬롯)
+- [x] `src/lib/slots.ts` — 슬롯 계산 순수 함수 (영업시간 + 휴무일 + 기존예약 → 가능 슬롯)
   - 영업시간 → slot_duration 단위로 슬롯 생성
   - break_start/break_end 구간 제거
   - 서비스 소요시간 고려 (슬롯 + duration > close_time 제외)
   - 기존 예약 겹침 확인 (pending + confirmed)
   - min_advance_hours 기준 과거 슬롯 제외
-- [ ] `src/app/api/businesses/[businessId]/slots/route.ts` — GET(`?date=&service_id=`)
+- [x] `src/app/api/businesses/[businessId]/slots/route.ts` — GET(`?date=&service_id=`)
 
 ---
 
@@ -325,7 +325,7 @@ src/
 | 3 | 업체 온보딩/설정 | ✅ |
 | 4 | 서비스 관리, 영업시간 관리 | ✅ |
 | 5 | 예약 관리 대시보드, 통계 | ✅ |
-| 6 | 슬롯 계산 API | ⬜ |
+| 6 | 슬롯 계산 API | ✅ |
 | 7 | 고객 예약 페이지 전체 플로우 | ⬜ |
 | 8 | 이메일 알림 | ⬜ |
 | 9 | 에러 처리, 반응형, 보안 | ⬜ |
