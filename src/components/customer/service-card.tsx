@@ -11,7 +11,7 @@ interface ServiceCardProps {
     duration: number
     price: number
   }
-  onSelect: (id: string) => void
+  onSelect?: (id: string) => void
 }
 
 export function ServiceCard({ service, onSelect }: ServiceCardProps) {
@@ -34,7 +34,7 @@ export function ServiceCard({ service, onSelect }: ServiceCardProps) {
             </span>
           </div>
         </div>
-        <Button size="sm" onClick={() => onSelect(service.id)}>
+        <Button size="sm" onClick={() => onSelect?.(service.id)}>
           예약
         </Button>
       </CardContent>

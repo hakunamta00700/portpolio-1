@@ -61,7 +61,7 @@ function ServiceListClient({
     <div className="space-y-3">
       {services.map((service) => (
         <Link key={service.id} href={`/${slug}/book?service=${service.id}`}>
-          <ServiceCard service={service} onSelect={() => {}} />
+          <ServiceCard service={service} />
         </Link>
       ))}
     </div>
