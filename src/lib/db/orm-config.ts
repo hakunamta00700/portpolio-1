@@ -14,7 +14,22 @@ export default defineConfig({
   driver: (isSQLite ? SqliteDriver : PostgreSqlDriver) as any,
   ...(isSQLite
     ? { dbName: url.replace('file:', '') }
-    : { clientUrl: url }
+    : (() => {
+        const u = new URL(url)
+        return {
+          dbName:   u.pathname.replace(/^\//, ''),
+          driverOptions: {
+            connection: {
+              host:     u.hostname,
+              port:     Number(u.port) || 5432,
+              user:     decodeURIComponent(u.username),
+              password: decodeURIComponent(u.password),
+              database: u.pathname.replace(/^\//, ''),
+              ssl:      { rejectUnauthorized: false },
+            },
+          },
+        }
+      })()
   ),
   entities,
   migrations: {

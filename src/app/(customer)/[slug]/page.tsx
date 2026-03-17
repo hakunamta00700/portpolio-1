@@ -48,7 +48,13 @@ export default async function BusinessPage({ params }: Props) {
             <p className="text-gray-400 text-sm">등록된 서비스가 없습니다</p>
           </div>
         ) : (
-          <ServiceListClient slug={slug} services={services} />
+          <ServiceListClient slug={slug} services={services.map(s => ({
+            id: s.id,
+            name: s.name,
+            description: s.description,
+            duration: s.duration,
+            price: s.price,
+          }))} />
         )}
 
         <p className="text-center text-xs text-gray-400 mt-8">

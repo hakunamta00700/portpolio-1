@@ -10,6 +10,7 @@
     "db:generate": "mikro-orm migration:create",
     "db:migrate": "mikro-orm migration:up",
     "db:migrate:prod": "dotenv -e .env.prod -- mikro-orm migration:up",
+    "db:schema:prod": "dotenv -e .env.prod -- mikro-orm schema:update --run",
     "db:seed": "tsx src/lib/db/seed.ts",
     "db:seed:prod": "dotenv -e .env.prod -- tsx src/lib/db/seed.ts"
   },
