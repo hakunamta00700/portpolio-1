@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
-    "build": "mikro-orm migration:up && next build",
+    "build": "next build",
     "start": "next start -p 3001",
     "lint": "eslint",
     "db:generate": "mikro-orm migration:create",
